@@ -3,6 +3,10 @@ window.alert("Welcome to the Password Generator. Please answer all the following
 
 // Get references to the #Generate element
 var generateBtn = document.querySelector("#generate");
+var useLower = false;
+var useUpper = false;
+var useNumbers = false;
+var useSpecials = false;
 
 // Password length prompt
 let getLength = function() {
@@ -18,17 +22,29 @@ let getLength = function() {
 //Call getLength function and make result a global variable
 var length = getLength();
 
-//Use lowercase pompt 
-let useLower = window.confirm("Would you like to use lowercase letters? Press 'OK' for YES, 'Cancel' for NO. ");
+// Selecting password character types
+var atLeastOne = function() {
 
-//Use uppercase prompt
-let useUpper = window.confirm("Would you like to use uppercase letters? Press 'OK' for YES, 'Cancel' for NO.");
+  //Use lowercase pompt 
+  useLower = window.confirm("Would you like to use lowercase letters? Press 'OK' for YES, 'Cancel' for NO. ");
 
-//Use numbers prompt
-let useNumbers = window.confirm("Would you like to use numbers? Press 'OK' for YES, 'Cancel' for NO.");
+  //Use uppercase prompt
+  useUpper = window.confirm("Would you like to use uppercase letters? Press 'OK' for YES, 'Cancel' for NO.");
 
-//Use special characters prompt
-let useSpecials = window.confirm("Would you like to use special characters? Press 'OK' for YES, 'Cancel' for NO.");
+  //Use numbers prompt
+  useNumbers = window.confirm("Would you like to use numbers? Press 'OK' for YES, 'Cancel' for NO.");
+
+  //Use special characters prompt
+  useSpecials = window.confirm("Would you like to use special characters? Press 'OK' for YES, 'Cancel' for NO.");
+
+  if(!useLower && !useUpper && !useNumbers && !useSpecials) {
+      window.alert("You must choose at least one character type to make a password.");
+      return atLeastOne();
+  }
+};
+atLeastOne();
+
+
 
 // Generate a random string 
 
@@ -46,7 +62,7 @@ function generatePassword(length, lower, upper, numbers, specials) {
     characters += '1234567890';
   }
   if (specials === true) {
-    characters += '!@#$%^&*()<>,.?: ';
+    characters += '!@#$%^&*()<>,.?:';
   }
   //Citation: generatePassword part from programiz.com
   let password = '';
