@@ -3,6 +3,8 @@ window.alert("Welcome to the Password Generator. Please answer all the following
 
 // Get references to the #Generate element
 var generateBtn = document.querySelector("#generate");
+
+// Set global variables for character types to feed into atLeastOne function
 var useLower = false;
 var useUpper = false;
 var useNumbers = false;
@@ -11,9 +13,9 @@ var useSpecials = false;
 // Password length prompt
 let getLength = function() {
   var passwordLength = window.prompt("How long do you want your password to be? Please choose a number from 8 to 128.");
-  passwordLength = parseInt(passwordLength);
+  
   //Conditional recursive function call
-  if(passwordLength === "" || passwordLength === null || passwordLength < 8 || passwordLength > 128) {
+  if(passwordLength == "" || passwordLength == null || passwordLength < 8 || passwordLength > 128) {
     window.alert("Try again! Please enter a number from 8 to 128.");
     return getLength();
   }
@@ -78,6 +80,8 @@ function generatePassword(length, lower, upper, numbers, specials) {
 var userPassword = generatePassword(length, useLower, useUpper, useNumbers, useSpecials);
 console.log(userPassword);
 
+window.alert("Please click the 'Generate Password' button to get your password.");
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -89,3 +93,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
