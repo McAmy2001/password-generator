@@ -1,8 +1,10 @@
-// Page greeting
-window.alert("Welcome to the Password Generator. Please answer all the following prompts for your password.");
-
 // Get references to the #Generate element
 var generateBtn = document.querySelector("#generate");
+
+// Assign page greeting function
+let startPage = function() {
+  window.alert("Welcome to the Password Generator. Please answer all the following prompts for your password.");
+};
 
 // Set global variables for character types to feed into atLeastOne function
 var useLower = false;
@@ -10,7 +12,7 @@ var useUpper = false;
 var useNumbers = false;
 var useSpecials = false;
 
-// Password length prompt
+// Assign password length prompt function
 let getLength = function() {
   var passwordLength = window.prompt("How long do you want your password to be? Please choose a number from 8 to 128.");
   
@@ -20,12 +22,10 @@ let getLength = function() {
     return getLength();
   }
   return passwordLength;
-}
-//Call getLength function and make result a global variable
-var length = getLength();
+};
 
-// Selecting password character types
-var atLeastOne = function() {
+// Assign function for selecting password character types
+let atLeastOne = function() {
 
   //Use lowercase pompt 
   useLower = window.confirm("Would you like to use lowercase letters? Press 'OK' for YES, 'Cancel' for NO. ");
@@ -44,14 +44,10 @@ var atLeastOne = function() {
       return atLeastOne();
   }
 };
-atLeastOne();
 
-
-
-// Generate a random string 
-
+// Asssign function for generating a random string 
 //Building character list collaborator: Phil Callister
-function generatePassword(length, lower, upper, numbers, specials) {
+let generatePassword = function (length, lower, upper, numbers, specials) {
   var characters = '';
   
   if (lower === true) {
@@ -74,23 +70,20 @@ function generatePassword(length, lower, upper, numbers, specials) {
     password += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return password;
-}
+};
 
-// Call generatePassword function and make result a global value
-var userPassword = generatePassword(length, useLower, useUpper, useNumbers, useSpecials);
-console.log(userPassword);
-
-window.alert("Please click the 'Generate Password' button to get your password.");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
+let writePassword = function() {
+  startPage();
+  //Call getLength function and make result a local variable
+  var length = getLength();
+  atLeastOne();
+  // Call generatePassword function and make result a local value
+  var userPassword = generatePassword(length, useLower, useUpper, useNumbers, useSpecials);
+  console.log(userPassword);
+  // Write password to the #password input
   var passwordText = document.querySelector("#password");
-
   passwordText.value = userPassword;
+};
 
-}
-
-// Add event listener to generate button
+// Event listener & generate button
 generateBtn.addEventListener("click", writePassword);
-
