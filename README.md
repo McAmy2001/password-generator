@@ -1,4 +1,4 @@
-# Challenge, week 3: Password Generator
+# Bootcamp Module 3: Javascript, Challenge: Password Generator
 
 ## In this project I was tasked to apply Java Script to starter code consisting of HTML and CSS for a password generator application. 
 
@@ -12,6 +12,6 @@
 
 #### Citation: I looked up the formula for generating a random string here: progrmiz.com
 
-#### Collaborator: I received much explanation and instruction on variable scope, parameters/arguments, and string building from Phil Callister (my husband, who also let me cry on his shoulder when frustration bubbled over).
+#### Collaborator: Starter code is from Bootcamp. Also, I received much explanation and instruction on variable scope, parameters/arguments, and string building from Phil Callister.
 
 ##### No Table of Contents, Installation Instructions, Usage Information, License Information, Badges, Features, or Tests for this assignment.
